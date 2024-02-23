@@ -48,6 +48,7 @@ return(<>
         
     </Card>
  </div>
+ <Typography textAlign={"center"}> go to singin page , to login</Typography>
 
 </>)
 }
