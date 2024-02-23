@@ -33,16 +33,17 @@ const AppBar: React.FC<AppBarProps> = (props : AppBarProps)=>{
             {isLoggedIn && <Typography> icon</Typography>}
             {isLoggedIn ? (<Button onClick={onLogout}>LogOut</Button>) :
             (<>
-                <Link to="/signup">
+                <Link to="/financialPlanner/signup">
             <Button variant="contained" >
                 SignUp
             </Button>
             </Link>
-            <Button variant="contained" onClick={()=>{
-                window.location= '/login';
-            }}>
+            <Link to="/financialPlanner/">
+            <Button variant="contained" >
                 SignIn
             </Button>
+            </Link>
+            
             </>
             )}
             

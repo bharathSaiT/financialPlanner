@@ -4,6 +4,7 @@ import Login from './Components/Login'
 import SignUp from './Components/SignUp';
 import { useState } from 'react';
 import UserHome from './Components/UserHome';
+import MiniDrawer from './Components/MiniDrawer';
 
 const  App : React.FC =()=>{
   const [isLoggedIn , setisLoggedIn]= useState(false);
@@ -17,11 +18,11 @@ const  App : React.FC =()=>{
     <>
     <Router>
         <div style={{ width: "100vw" , height:"100vh" ,backgroundColor:"#eeeeee"}}>
-          <AppBar  isLoggedIn={isLoggedIn} onLogout={handleLogout} ></AppBar>
+          {!isLoggedIn && <AppBar  isLoggedIn={isLoggedIn} onLogout={handleLogout} ></AppBar>}
           <Routes>
-            <Route path="/Login" element={<Login press={handleLogout}></Login>}></Route>
-            <Route path='/signup' Component={SignUp}></Route>
-            <Route path='/user/:userid' element={ isLoggedIn? <UserHome></UserHome> : <Login press={handleLogout}></Login> } ></Route>
+            <Route path="/financialPlanner/" element={<Login press={handleLogout}></Login>}></Route>
+            <Route path='/financialPlanner/signup' Component={SignUp}></Route>
+            <Route path='/financialPlanner/user/:userid' element={ isLoggedIn? <MiniDrawer onLogout={handleLogout}></MiniDrawer> : <Login press={handleLogout}></Login> } ></Route>
           </Routes>
           
         </div>

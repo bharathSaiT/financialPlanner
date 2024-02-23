@@ -11,7 +11,7 @@ const Login : React.FC<LoginProps> = ({press}) =>  {
     const handleLogin=()=>{
         press();
         const userid = 246;
-        navigate(`/user/${userid}`);
+        navigate(`/financialPlanner/user/${userid}`);
     }
 
 return (<>
