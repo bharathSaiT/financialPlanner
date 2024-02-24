@@ -21,7 +21,7 @@ const  App : React.FC =()=>{
           {!isLoggedIn && <AppBar  isLoggedIn={isLoggedIn} onLogout={handleLogout} ></AppBar>}
           <Routes>
             <Route path="/financialPlanner/" element={<Login press={handleLogout}></Login>}></Route>
-            <Route path='/financialPlanner/signup' Component={SignUp}></Route>
+            <Route path='/financialPlanner/signup' element={<SignUp press={handleLogout}></SignUp>}></Route>
             <Route path='/financialPlanner/user/:userid' element={ isLoggedIn? <MiniDrawer onLogout={handleLogout}></MiniDrawer> : <Login press={handleLogout}></Login> } ></Route>
           </Routes>
           

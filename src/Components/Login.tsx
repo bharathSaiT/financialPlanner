@@ -1,4 +1,5 @@
 import { Button, Card, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 type LoginProps={
@@ -7,11 +8,33 @@ type LoginProps={
 
 const Login : React.FC<LoginProps> = ({press}) =>  {
     const navigate = useNavigate();
+    const [email,setemail] = useState<string>("");
+    const [password,setpassword] = useState<string>("");
 
     const handleLogin=()=>{
-        press();
-        const userid = 246;
-        navigate(`/financialPlanner/user/${userid}`);
+        fetch("http://localhost:3000/login",{
+            method:"POST",
+            headers:{
+                'Content-Type':"application/json"
+            },
+            body:JSON.stringify({
+                email: email,
+                password :password
+            })
+        }).then(callback)
+
+        function callback(response :any ){
+            if(response.ok){
+                response.json().
+                then(function(data){
+                    const userid = "user";
+                    press();
+                    navigate(`/financialPlanner/user/${userid}`)
+                })
+            }else{
+                alert("Login Failed!!")
+            }
+        }
     }
 
 return (<>
@@ -27,11 +50,15 @@ return (<>
         }}>
 
                 <div>
-                    <TextField  fullWidth= {true} id="filled-basic" label="Email" variant="outlined" type="email" size= "small"/>
+                    <TextField  fullWidth= {true} id="filled-basic" label="Email" variant="outlined" type="email" size= "small"
+                    onChange={e => setemail(e.target.value)}
+                    value={email}/>
                 </div>
                 <br></br>
                 <div>
-                    <TextField fullWidth={true} id="filled-basic" label="Password" variant="outlined" type="password" size= "small"/>
+                    <TextField fullWidth={true} id="filled-basic" label="Password" variant="outlined" type="password" size= "small"
+                    onChange={e => setpassword(e.target.value)}
+                    value={password}/>
                 </div>
                 <br></br>
                 <Button variant="contained" onClick={handleLogin}>Login </Button>            
