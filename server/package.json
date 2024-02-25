@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "server for financial planner",
   "type": "module",
-  "main": "server.js",
+  "main": "src/server.ts",
   "scripts": {
     "build": "tsc",
     "dev": "npm run build && node dist/server.js",

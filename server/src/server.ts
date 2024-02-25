@@ -78,6 +78,8 @@ app.listen(3000,()=>{
     console.log("Server started at port 3000")
 })
 
+export default app;
+
     // console.log(req.body);
     // console.log("params : ",req.query);
     // console.log("headers : " , req.headers.username);
